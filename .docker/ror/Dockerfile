@@ -13,6 +13,8 @@ WORKDIR /ror
 COPY ./ror /ror
 RUN gem install bundler
 RUN bundle install
+RUN yarn add jquery@3.4.1 bootstrap@3.4.1
+RUN yarn install --check-files
 
 # Configure endpoint.
 COPY ./.docker/ror/entrypoint.sh /usr/bin/
