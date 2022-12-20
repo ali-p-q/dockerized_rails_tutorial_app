@@ -7,6 +7,8 @@ services:
     volumes:
       - ./.docker/volumes/database:/var/lib/postgresql/data
   web:
+    stdin_open: true
+    tty: true
     build:
       context: .
       dockerfile: .docker/ror/Dockerfile

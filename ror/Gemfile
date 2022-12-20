@@ -20,6 +20,7 @@ gem "sprockets-rails"
 gem "importmap-rails"
 gem "turbo-rails"
 gem "stimulus-rails"
+gem "net-http"
 
 group :development, :test do
   gem "sqlite3", "~> 1.5.4" # (was 1.4.1)

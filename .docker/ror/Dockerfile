@@ -1,4 +1,4 @@
-FROM ruby:2.7
+FROM ruby:2.7.7-bullseye
 
 # Register Yarn package source.
 RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
@@ -14,7 +14,6 @@ COPY ./ror /ror
 RUN gem install bundler
 RUN bundle install
 RUN yarn add jquery@3.4.1 bootstrap@3.4.1
-RUN yarn install --check-files
 
 # Configure endpoint.
 COPY ./.docker/ror/entrypoint.sh /usr/bin/
