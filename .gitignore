@@ -43,3 +43,6 @@
 # Misc
 .DS_Store
 .idea
+
+# Make sure to not ignore /assets/builds .keep file
+!app/assets/builds/.keep
