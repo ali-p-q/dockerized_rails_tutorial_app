@@ -1,7 +1,7 @@
-ENV["RAILS_ENV"] ||= "test"
-require_relative "../config/environment"
-require "rails/test_help"
-require "minitest/reporters"
+ENV['RAILS_ENV'] ||= 'test'
+require_relative '../config/environment'
+require 'rails/test_help'
+require 'minitest/reporters'
 Minitest::Reporters.use!
 
 class ActiveSupport::TestCase
@@ -13,6 +13,6 @@ class ActiveSupport::TestCase
 
   # Make full title helper available to test suite
   class ActiveSupport::TestCase
-    include FullTitleHelper 
+    include FullTitleHelper
   end
 end
