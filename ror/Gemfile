@@ -25,6 +25,8 @@ gem 'will_paginate', '~>3.1.8'
 group :development, :test do
   gem 'byebug', '~>11.0.1', platforms: %i[mri mingw x64_mingw]
   gem 'rubocop'
+  gem 'rubocop-minitest'
+  gem 'rubocop-rails'
   gem 'sqlite3', '~> 1.5.4' # (was 1.4.1)
 end
 
