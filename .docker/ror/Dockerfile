@@ -1,25 +1,27 @@
-FROM ruby:2.7.7-bullseye
+FROM postgres:14.6-bullseye
+FROM ruby:3.1.3-bullseye
 
-# Register Yarn package source.
-RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
-RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
+# Ensure node.js 19 is available for apt-get
+RUN curl -sL https://deb.nodesource.com/setup_19.x | bash -
 
-# Install additional packages.
-RUN apt update -qq
-RUN apt install -y postgresql-client nodejs yarn
+# Install dependencies
+RUN apt-get update -qq && apt-get install -y build-essential libvips nodejs && npm install -g yarn
 
 # Prepare working directory.
 WORKDIR /ror
 COPY ./ror /ror
-RUN gem install bundler
+
+# Ensure gems are installed on a persistent volume and available as bins
+VOLUME /bundle
+RUN bundle config set --global path '/bundle'
+ENV PATH="/bundle/ruby/3.1.3/bin:${PATH}"
+
+# Install Rails
 RUN bundle install
-RUN yarn add jquery@3.4.1 bootstrap@3.4.1
 
 # Configure endpoint.
 COPY ./.docker/ror/entrypoint.sh /usr/bin/
 RUN chmod +x /usr/bin/entrypoint.sh
-ENTRYPOINT ["entrypoint.sh"]
-EXPOSE 3000
 
 # Start app server.
 CMD ["bundle", "exec", "rails", "server", "-b", "0.0.0.0"]
