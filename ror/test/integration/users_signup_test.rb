@@ -18,7 +18,7 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
     assert_select 'div.alert'
   end
 
-  test 'should submit valid user on signup form' do
+  test 'should login valid user on successful signup' do
     assert_difference 'User.count', 1 do
       get signup_path
       post users_path, params: { user: {  name: 'user',
@@ -29,5 +29,6 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
     follow_redirect!
     assert_template 'users/show'
     assert_not flash.empty?
+    assert is_logged_in?
   end
 end
