@@ -4,18 +4,15 @@ services:
     image: postgres
     env_file:
       - .env
-    volumes:
-      - ./.docker/volumes/database:/var/lib/postgresql/data
   web:
-    stdin_open: true
-    tty: true
     build:
       context: .
-      dockerfile: .docker/ror/Dockerfile
+      dockerfile: Dockerfile
     env_file:
       - .env
     volumes:
-      - ./ror:/ror
+      - .:/rails
+      - /bundle
     ports:
       - "3000:3000"
     depends_on:
