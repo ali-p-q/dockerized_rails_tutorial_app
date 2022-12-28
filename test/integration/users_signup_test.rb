@@ -18,15 +18,15 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
     assert_select 'div.alert'
   end
 
-  test "should gracefully reject duplicate email on attempted signup" do
+  test 'should gracefully reject duplicate email on attempted signup' do
     assert_no_difference 'User.count' do
       get signup_path
       duplicate_user = users(:user1)
-      post users_path, params: { user: { name: duplicate_user.name, 
-                                  email: duplicate_user.email,
-                                  passoword: '123123',
-                                  password_confirmation: '123123' } }
-      end
+      post users_path, params: { user: { name: duplicate_user.name,
+                                         email: duplicate_user.email,
+                                         passoword: '123123',
+                                         password_confirmation: '123123' } }
+    end
     assert_template 'users/new'
     assert_select 'div#error_explanation'
     assert_select 'div.alert'

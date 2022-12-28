@@ -24,8 +24,6 @@ gem 'will_paginate', '~>3.1.8'
 
 group :development, :test do
   gem 'debug', platforms: %i[mri mingw x64_mingw]
-  gem 'solargraph'
-  # gem 'pg', '~>1.1.4'
   # gem 'sqlite3', '~> 1.4'
 end
 

@@ -141,6 +141,7 @@ GEM
     guard-minitest (2.4.6)
       guard-compat (~> 1.2)
       minitest (>= 3.0)
+    htmlbeautifier (1.4.2)
     i18n (1.12.0)
       concurrent-ruby (~> 1.0)
     image_processing (1.9.3)
@@ -358,6 +359,7 @@ DEPENDENCIES
   faker (~> 2.1.2)
   guard (~> 2.15.0)
   guard-minitest (~> 2.4.6)
+  htmlbeautifier
   image_processing (~> 1.9.3)
   importmap-rails
   jbuilder

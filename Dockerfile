@@ -12,11 +12,6 @@ RUN gem install bundler
 WORKDIR /rails
 COPY . /rails
 
-# Ensure gems are installed on a persistent volume and available as bins
-VOLUME /bundle
-RUN bundle config set --global path '/bundle'
-ENV PATH="/bundle/ruby/3.1.0/bin:${PATH}"
-
 # Install gems
 RUN bundle install
 

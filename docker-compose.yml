@@ -12,7 +12,6 @@ services:
       - .env
     volumes:
       - .:/rails
-      - /bundle
     ports:
       - "3000:3000"
     depends_on:
