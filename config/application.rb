@@ -6,6 +6,15 @@ require "rails/all"
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+# Load dotenv only in development or test environment
+if ['development', 'test'].include? ENV['RAILS_ENV']
+  Dotenv::Railtie.load
+end
+
+POSTGRES_HOST = ENV['POSTGRES_HOST']
+POSTGRES_USER = ENV['POSTGRES_USER']
+POSTGRES_PASSWORD = ENV['POSTGRES_PASSWORD']
+
 module SampleApp
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.

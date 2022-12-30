@@ -14,7 +14,6 @@ gem 'importmap-rails'
 gem 'jbuilder'
 gem 'mini_magick', '~>4.9.5'
 gem 'net-http', '~> 0.3.2'
-gem 'pg', '~>1.1.4'
 gem 'puma', '~>5.0'
 gem 'rails', '~>7.0.4'
 gem 'sprockets-rails'
@@ -24,6 +23,14 @@ gem 'will_paginate', '~>3.1.8'
 
 group :development, :test do
   gem 'debug', platforms: %i[mri mingw x64_mingw]
+  gem 'dotenv-rails', '~> 2.8', '>= 2.8.1'
+  gem 'pg', '~>1.4'
+  gem 'rspec'
+  gem 'rubocop', '~> 1.41', '>= 1.41.1'
+  gem 'rubocop-minitest', '~> 0.25.1', require: true
+  gem 'rubocop-rails', '~> 2.17', '>= 2.17.4', require: true
+  gem 'solargraph'
+  gem 'solargraph-rails'
   # gem 'sqlite3', '~> 1.4'
 end
 
@@ -37,9 +44,11 @@ end
 group :test do
   gem 'capybara'
   gem 'guard', '~>2.15.0'
-  gem 'guard-minitest', '~>2.4.6'
-  gem 'minitest', '~>5.11.3'
-  gem 'minitest-reporters', '~>1.5.0'
+  gem 'guard-rspec', '~> 4.7', '>= 4.7.3'
+  gem 'rspec-rails', '~> 6.0', '>= 6.0.1'
+  # gem 'guard-minitest', '~>2.4.6'
+  # em 'minitest', '~>5.11.3'
+  # gem 'minitest-reporters', '~>1.5.0'
   gem 'rails-controller-testing', '~>1.0.4'
   gem 'ruby_gntp', '~> 0.3.4'
   gem 'selenium-webdriver'
@@ -48,7 +57,7 @@ end
 
 group :production do
   gem 'aws-sdk-s3', '1.46.0', require: false
-  # gem 'pg', '~>1.1.4'
+  gem 'pg', '~>1.4'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
