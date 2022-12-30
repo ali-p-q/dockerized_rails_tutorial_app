@@ -25,7 +25,6 @@ group :development, :test do
   gem 'debug', platforms: %i[mri mingw x64_mingw]
   gem 'dotenv-rails', '~> 2.8', '>= 2.8.1'
   gem 'pg', '~>1.4'
-  gem 'rspec'
   gem 'rubocop', '~> 1.41', '>= 1.41.1'
   gem 'rubocop-minitest', '~> 0.25.1', require: true
   gem 'rubocop-rails', '~> 2.17', '>= 2.17.4', require: true
@@ -45,11 +44,8 @@ group :test do
   gem 'capybara'
   gem 'guard', '~>2.15.0'
   gem 'guard-rspec', '~> 4.7', '>= 4.7.3'
-  gem 'rspec-rails', '~> 6.0', '>= 6.0.1'
-  # gem 'guard-minitest', '~>2.4.6'
-  # em 'minitest', '~>5.11.3'
-  # gem 'minitest-reporters', '~>1.5.0'
   gem 'rails-controller-testing', '~>1.0.4'
+  gem 'rspec-rails', '~> 6.0', '>= 6.0.1'
   gem 'ruby_gntp', '~> 0.3.4'
   gem 'selenium-webdriver'
   gem 'webdrivers'
