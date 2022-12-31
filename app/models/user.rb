@@ -1,3 +1,8 @@
+# frozen_string_literal: true
+
+#
+# User model
+#
 class User < ApplicationRecord
   # User name validations
   validates :name, presence: true, length: { maximum: 255 }
@@ -23,6 +28,6 @@ class User < ApplicationRecord
   end
 
   def self.new_token
-    SecureRandom
+    SecureRandom.urlsafe_base64
   end
 end
