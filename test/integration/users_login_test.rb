@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'test_helper'
 
 class UsersLoginTest < ActionDispatch::IntegrationTest
@@ -5,10 +7,25 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
     @user = users(:user1)
   end
 
+  def log_in_as(user, password: '123123', remember_me: '1')
+    post(login_path, params: {
+      session: {
+        email: @user.email,
+        password:,
+        remember_me:
+      }
+    }
+    )
+  end
+
   test 'login with valid credentials and logout' do
     get login_path
-    post login_path, params: { session: { email: @user.email,
-                                          password: '123123' } }
+    post login_path, params: {
+      session: {
+        email: @user.email,
+        password: '123123'
+      }
+    }
     assert is_logged_in?
     assert_redirected_to @user
     follow_redirect!
@@ -43,5 +60,18 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
     post login_path, params: { session: { email: '', password: '' } }
     assert_not is_logged_in?
     assert_not flash[:danger].nil?
+  end
+
+  test 'login with remembering' do
+    log_in_as(@user, remember_me: '1')
+    assert_equal cookies[:remember_token], assigns(:user).remember_token
+  end
+
+  test 'login without remembering' do
+    # login to set the cookie
+    log_in_as(@user, remember_me: '1')
+    # login again and  verify that the cookie is deleted
+    log_in_as(@user, remember_me: '0')
+    assert_empty cookies[:remember_token]
   end
 end

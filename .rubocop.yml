@@ -10,8 +10,8 @@
 # See https://docs.rubocop.org/rubocop/configuration
 
 inherit_from:
-  - '.rubocop-rails.yml'
-  - '.rubocop-rspec.yml'
+  - 'config/.rubocop-rails.yml'
+  - 'config/.rubocop-rspec.yml'
 
 require:
   - rubocop-rails
@@ -164,6 +164,7 @@ Lint/UselessMethodDefinition:
 # ============== Metric =================
 
 Metrics/AbcSize:
+ CountRepeatedAttributes: false
  Max: 45
 
 Metrics/BlockLength:

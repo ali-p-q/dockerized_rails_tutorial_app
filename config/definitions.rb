@@ -260,6 +260,12 @@
 #     require 'weakref'
 #     require 'yaml'
 #   end
+#   class ApplicationController
+#     include ActiveRecord::Callbacks
+#   end
+#   class SessionController
+#     include ActiveRecord::Callbacks
+#   end
 #   module SessionsHelper
 #     include ActionController::Cookies
 #   end
