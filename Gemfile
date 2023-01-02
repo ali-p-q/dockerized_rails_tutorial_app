@@ -27,9 +27,10 @@ group :development, :test do
   # gem 'fastri'
   gem 'pg', '~>1.4'
   # gem 'rcodetools'
-  gem 'rubocop', '~> 1.41', '>= 1.41.1'
-  gem 'rubocop-minitest', '~> 0.25.1', require: true
-  gem 'rubocop-rails', '~> 2.17', '>= 2.17.4', require: true
+  gem 'rubocop', '~> 1.42'
+  gem 'rubocop-minitest', require: true
+  gem 'rubocop-rails', require: true
+  gem 'rubocop-rspec', require: true
   # gem 'ruby_language_server'
   gem 'solargraph'
   gem 'solargraph-rails'

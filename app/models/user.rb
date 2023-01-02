@@ -17,17 +17,41 @@ class User < ApplicationRecord
   has_secure_password
   validates :password, presence: true, length: { minimum: 6 }
 
-  # Returns the hash digest of the given string.
-  def self.digest(string)
-    cost = if ActiveModel::SecurePassword.min_cost
-             BCrypt::Engine::MIN_COST
-           else
-             BCrypt::Engine.cost
-           end
-    BCrypt::Password.create(string, cost:)
+  # User remember token accessor methods
+  attr_accessor :remember_token
+
+  # Saves a remember_digest to database
+  def remember
+    self.remember_token = User.new_token
+    # has to bypass validations (no access to password/password_confirmation)
+    update_attribute(:remember_digest, User.digest(remember_token))
   end
 
-  def self.new_token
-    SecureRandom.urlsafe_base64
+  def authenticated?(remember_token)
+    return false if remember_digest.nil?
+    
+    BCrypt::Password.new(remember_digest).is_password?(remember_token)
+  end
+
+  def forget
+    # has to bypass validations (no access to password/password_confirmation)
+    update_attribute(:remember_digest, nil)
+  end
+
+  class << self
+    # Returns the hash digest of the given string.
+    def digest(string)
+      cost = if ActiveModel::SecurePassword.min_cost
+               BCrypt::Engine::MIN_COST
+             else
+               BCrypt::Engine.cost
+             end
+      BCrypt::Password.create(string, cost:)
+    end
+
+    # Returns a base64 url safe string
+    def new_token
+      SecureRandom.urlsafe_base64
+    end
   end
 end

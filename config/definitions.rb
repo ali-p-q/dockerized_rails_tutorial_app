@@ -17,6 +17,7 @@
 #     extend ActiveRecord::FinderMethods
 #     extend ActiveRecord::Associations::ClassMethods
 #     extend ActiveRecord::Inheritance::ClassMethods
+#     include ActiveRecord::Callbacks::ClassMethods
 #     include ActiveRecord::Persistence
 #     include ActiveModel::API
 #     include ActiveModel::AttributeAssignment
@@ -43,7 +44,6 @@
 #     extend ActiveModel::Errors
 #     extend ActiveModel::Name
 #     extend ActiveModel::NestedError
-#     extend ActiveRecord::UnknownAttributeError
 #     extend ActiveModel::ValidationError
 #     extend ActiveModel::Validator
 #     require 'abbrev'
@@ -259,6 +259,9 @@
 #     require 'uri'
 #     require 'weakref'
 #     require 'yaml'
+#   end
+#   module SessionsHelper
+#     include ActionController::Cookies
 #   end
 # @!override ActiveRecord::FinderMethods#find
 #   @overload find(id)
