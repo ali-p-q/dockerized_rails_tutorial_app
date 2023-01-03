@@ -51,6 +51,7 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
     post login_path, params: { session: { email: @user.email, password: '' } }
     assert_not is_logged_in?
     assert_not flash[:danger].nil?
+    assert_select 'div.alert'
   end
 
   test 'try to login with invalid email and invalid password' do
@@ -60,6 +61,7 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
     post login_path, params: { session: { email: '', password: '' } }
     assert_not is_logged_in?
     assert_not flash[:danger].nil?
+    assert_select 'div.alert'
   end
 
   test 'login with remembering' do
