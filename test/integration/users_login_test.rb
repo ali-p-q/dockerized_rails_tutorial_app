@@ -61,7 +61,7 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
     post login_path, params: { session: { email: '', password: '' } }
     assert_not is_logged_in?
     assert_not flash[:danger].nil?
-    assert_select 'div.alert'
+    assert_select 'div.alert', I18n.t('flash.session.create.failure')
   end
 
   test 'login with remembering' do
