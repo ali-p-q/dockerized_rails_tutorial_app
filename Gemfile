@@ -24,14 +24,12 @@ gem 'will_paginate', '~>3.1.8'
 group :development, :test do
   gem 'debug', platforms: %i[mri mingw x64_mingw]
   gem 'dotenv-rails', '~> 2.8', '>= 2.8.1'
-  # gem 'fastri'
+  gem 'htmlbeautifier'
   gem 'pg', '~>1.4'
-  # gem 'rcodetools'
   gem 'rubocop', '~> 1.42'
   gem 'rubocop-minitest', require: true
   gem 'rubocop-rails', require: true
   gem 'rubocop-rspec', require: true
-  # gem 'ruby_language_server'
   gem 'solargraph'
   gem 'solargraph-rails'
   # gem 'sqlite3', '~> 1.4'

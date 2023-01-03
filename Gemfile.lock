@@ -145,6 +145,7 @@ GEM
       guard (~> 2.1)
       guard-compat (~> 1.1)
       rspec (>= 2.99.0, < 4.0)
+    htmlbeautifier (1.4.2)
     i18n (1.12.0)
       concurrent-ruby (~> 1.0)
     image_processing (1.9.3)
@@ -390,6 +391,7 @@ DEPENDENCIES
   faker (~> 2.1.2)
   guard (~> 2.15.0)
   guard-rspec (~> 4.7, >= 4.7.3)
+  htmlbeautifier
   image_processing (~> 1.9.3)
   importmap-rails
   jbuilder
