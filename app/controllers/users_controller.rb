@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
@@ -7,12 +9,23 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
+  def edit
+    @user = User.find(params[:id])
+  end
+
   def create
     @user = User.new(user_params)
     if @user.save
-      log_in @user
-      flash[:success] = "Welcome #{@user.name}!"
-      redirect_to @user
+      log_in(@user)
+      flash[:success] =
+        t('flash.users.create.welcome').concat(
+          ", #{@user.name}!"
+        )
+      redirect_to(@user)
+    else
+      render('new')
+    end
+  end
     else
       render 'new'
     end
