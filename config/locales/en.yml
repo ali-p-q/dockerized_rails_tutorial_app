@@ -30,4 +30,24 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  activerecord:
+    attributes:
+      user:
+        email: 'E-mail address'
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              blank: 'is required'
+  flash:
+    users:
+      create:
+        welcome: 'Welcome'
+      update:
+        success: 'Changes saved successfully.'
+        failure: 'Error trying to update.'
+    
+    session:
+      create:
+        failure: 'That email or password is incorrect.'
