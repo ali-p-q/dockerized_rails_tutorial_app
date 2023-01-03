@@ -50,4 +50,5 @@ en:
     
     session:
       create:
+        success: 'User credentials accepted. Loggin-in...'
         failure: 'That email or password is incorrect.'
