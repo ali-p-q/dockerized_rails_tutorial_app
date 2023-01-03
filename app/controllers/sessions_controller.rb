@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
       params[:session][:remember_me] == '1' ? remember(@user) : forget(@user)
       redirect_to(@user)
     else
-      flash.now[:danger] = t('session.create.failure')
+      flash.now[:danger] = t('flash.session.create.failure')
       render('new')
     end
   end
