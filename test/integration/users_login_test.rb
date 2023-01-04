@@ -26,7 +26,7 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
         password: '123123'
       }
     }
-    assert is_logged_in?
+    assert logged_in?
     assert_redirected_to @user
     follow_redirect!
     assert_template 'users/show'
@@ -34,7 +34,7 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
     assert_select 'a[href=?]', logout_path
     assert_select 'a[href=?]', user_path(@user)
     delete logout_path
-    assert_not is_logged_in?
+    assert_not logged_in?
     assert_redirected_to root_path
     # Simulate a user clicking logout in a second window
     delete logout_path
@@ -49,7 +49,7 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
     assert_response :success
     assert_template 'sessions/new'
     post login_path, params: { session: { email: @user.email, password: '' } }
-    assert_not is_logged_in?
+    assert_not logged_in?
     assert_not flash[:danger].nil?
     assert_select 'div.alert'
   end
@@ -59,7 +59,7 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
     assert_response :success
     assert_template 'sessions/new'
     post login_path, params: { session: { email: '', password: '' } }
-    assert_not is_logged_in?
+    assert_not logged_in?
     assert_not flash[:danger].nil?
     assert_select 'div.alert', I18n.t('flash.session.create.failure')
   end

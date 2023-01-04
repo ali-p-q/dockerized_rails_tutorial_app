@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'test_helper'
 
 class UsersSignupTest < ActionDispatch::IntegrationTest
@@ -55,6 +57,6 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
     follow_redirect!
     assert_template 'users/show'
     assert_not flash.empty?
-    assert is_logged_in?
+    assert logged_in?
   end
 end
