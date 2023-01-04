@@ -44,6 +44,7 @@
 # Misc
 .DS_Store
 .idea
+.ongoing_commit_msg
 
 # Make sure to not ignore /assets/builds .keep file
 !app/assets/builds/.keep
