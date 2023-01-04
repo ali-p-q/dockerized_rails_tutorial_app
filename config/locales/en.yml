@@ -52,3 +52,9 @@ en:
       create:
         success: 'User credentials accepted. Loggin-in...'
         failure: 'Incorrect email/password combination.'
+  
+  form:
+    user:
+      errors:
+        one: 'The form contains 1 error'
+        other: "The form contains %{count} errors"
