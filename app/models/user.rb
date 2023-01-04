@@ -17,7 +17,7 @@ class User < ApplicationRecord
 
   # User password validations
   has_secure_password
-  validates :password, presence: true, length: { minimum: 6 }
+  validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
 
   # User remember token accessor methods
   attr_accessor :remember_token
