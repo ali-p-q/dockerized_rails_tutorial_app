@@ -33,7 +33,7 @@ en:
   activerecord:
     attributes:
       user:
-        email: 'E-mail address'
+        email: "E-mail address"
     errors:
       models:
         user:
@@ -43,18 +43,23 @@ en:
   flash:
     users:
       create:
-        welcome: 'Welcome'
+        welcome: "Welcome"
       update:
-        success: 'Changes saved successfully.'
-        failure: 'Error trying to update.'
-    
+        success: "Changes saved successfully."
+        failure: "Error trying to update."
+      assert:
+        authorized:
+          failure: "Access denied: You tried to access another user's account."
+        login:
+          failure: "Please log in."
+
     session:
       create:
-        success: 'User credentials accepted. Loggin-in...'
-        failure: 'Incorrect email/password combination.'
-  
+        success: "User credentials accepted. Loggin-in..."
+        failure: "Incorrect email/password combination."
+
   form:
     user:
       errors:
-        one: 'The form contains 1 error'
+        one: "The form contains 1 error"
         other: "The form contains %{count} errors"

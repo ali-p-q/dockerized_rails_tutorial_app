@@ -34,7 +34,7 @@ module SessionsHelper
     elsif (user_id = cookies.encrypted[:user_id])
       user = User.find_by(id: user_id)
       if user&.authenticated?(cookies[:remember_token])
-        log_in user
+        log_in(user)
         @current_user = user
       end
     end
@@ -43,5 +43,20 @@ module SessionsHelper
   # Returns true if the user is looged in, false otherwise.
   def logged_in?
     !!current_user
+  end
+
+  # Redirects to stored location (or to the default).
+  def redirect_back_or(default)
+    redirect_to(session[:forwarding_url] || default)
+    session.delete(:forwarding_url)
+  end
+
+  # Stores the URL trying to be accessed.
+  def store_location
+    session[:forwarding_url] = request.original_url if request.get?
+  end
+
+  def clear_forwarding_url
+    session.delete(:forwarding_url)
   end
 end

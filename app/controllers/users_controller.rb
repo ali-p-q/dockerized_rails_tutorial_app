@@ -1,7 +1,10 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
-  before_action :logged_in_user, only: %i[edit update]
+  before_action :clear_forwarding_url, except: %i[show edit update]
+  before_action :logged_in_user, only: %i[show edit update]
+  before_action :correct_user, only: %i[show edit update]
+
   def show
     @user = User.find(params[:id])
   end
@@ -47,7 +50,19 @@ class UsersController < ApplicationController
   def logged_in_user
     return if logged_in?
 
+    store_location
     flash[:danger] = t('flash.users.assert.login.failure')
     redirect_to(login_url)
+  end
+
+  def correct_user
+    return if current_user?
+
+    flash[:danger] = t('flash.users.assert.authorized.failure')
+    redirect_to(root_url)
+  end
+
+  def current_user?
+    current_user == User.find(params[:id])
   end
 end
