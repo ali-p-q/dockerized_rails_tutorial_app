@@ -21,6 +21,10 @@ class ActiveSupport::TestCase
   def log_in_as(user)
     session[:user_id] = user.id
   end
+
+  def request_url_eql?(url)
+    request.original_url == url
+  end
 end
 
 class ActionDispatch::IntegrationTest
