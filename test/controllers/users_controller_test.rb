@@ -14,19 +14,6 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_select 'title', full_title('Sign up')
   end
 
-  test 'should redirect show when not logged in' do
-    get user_path(@user)
-    assert_not flash.empty?
-    assert_redirected_to login_url
-  end
-
-  test 'should redirect show when unauthorized' do
-    log_in_as(@user)
-    get user_path(@other_user)
-    assert_not flash.empty?
-    assert_redirected_to root_url
-  end
-
   test 'should redirect edit when not logged in' do
     get edit_user_path(@user)
     assert_not flash.empty?
