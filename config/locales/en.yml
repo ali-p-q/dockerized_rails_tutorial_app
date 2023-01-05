@@ -48,6 +48,8 @@ en:
         success: "Changes saved successfully."
         failure: "Error trying to update."
       assert:
+        admin:
+          failure: "You do not have permission to access this page."
         authorized:
           failure: "Access denied: You tried to access another user's account."
         login:

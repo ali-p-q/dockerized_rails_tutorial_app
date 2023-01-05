@@ -40,6 +40,11 @@ module SessionsHelper
     end
   end
 
+  # Returns true if the user is admin, false otherwise.
+  def admin_user?
+    current_user&.admin?
+  end
+  
   # Returns true if the user is looged in, false otherwise.
   def logged_in?
     !!current_user
